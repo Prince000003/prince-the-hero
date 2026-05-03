@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prince Hero</title>
+  <style>
+    :root {
+      --bg: #0b1120;
+      --surface: #111827;
+      --text: #f8fafc;
+      --accent: #22c55e;
+      --muted: #94a3b8;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      background: radial-gradient(circle at top, rgba(34, 197, 94, 0.15), transparent 25%),
+                  linear-gradient(180deg, #0f172a 0%, #020617 100%);
+      color: var(--text);
+    }
+
+    header {
+      padding: 2rem 1.5rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 5rem;
+    }
+
+    .hero-content {
+      max-width: 640px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.16em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.75rem, 5vw, 5rem);
+      line-height: 0.95;
+      margin: 0;
+    }
+
+    .hero-copy {
+      margin: 1.5rem 0 2rem;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 1.65rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #020617;
+    }
+
+    .button-secondary {
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .features {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 2rem;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .feature-card h3 {
+      margin: 0 0 0.75rem;
+      font-size: 1.05rem;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.97rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      min-height: 420px;
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.18), rgba(56, 189, 248, 0.12));
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(34, 197, 94, 0.35), transparent 20%),
+                  radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.2), transparent 18%);
+      pointer-events: none;
+    }
+
+    .hero-visual-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      color: var(--text);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .hero-visual h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .hero-visual p {
+      margin: 1rem auto 0;
+      max-width: 38rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    footer {
+      padding: 2rem 1.5rem 3rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 720px) {
+      header,
+      .hero {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .hero {
+        padding-top: 3rem;
+      }
+
+      .hero-visual {
+        min-height: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Prince Hero</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <section class="hero-content">
+      <div class="eyebrow">Welcome</div>
+      <h1 class="hero-title">A polished homepage crafted for your project.</h1>
+      <p class="hero-copy">Build with clarity, style, and speed. This landing page gives you an elegant hero section, simple navigation, and feature cards to showcase your ideas.</p>
+
+      <div class="hero-actions">
+        <a class="button button-primary" href="#features">Explore features</a>
+        <a class="button button-secondary" href="#contact">Get in touch</a>
+      </div>
+
+      <div class="features" id="features">
+        <article class="feature-card">
+          <h3>Fast setup</h3>
+          <p>Quickly customize this page for your brand, content, or next demo with no extra dependencies.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Responsive design</h3>
+          <p>Looks great on mobile, tablet, and desktop with clean spacing, readable type, and modern visuals.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Modern style</h3>
+          <p>Dark glass surfaces, subtle gradients, and a minimal layout keep the page fresh and professional.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="hero-visual">
+      <div class="hero-visual-content">
+        <h2>Launch your project with confidence.</h2>
+        <p>Create a strong first impression with an engaging landing page built for clarity and conversion.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <p>Need help customizing this page? Replace this text with your own contact details or project details.</p>
+  </footer>
+</body>
+</html>
